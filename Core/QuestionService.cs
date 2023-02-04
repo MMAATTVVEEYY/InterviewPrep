@@ -51,8 +51,7 @@ namespace IntervewPrep.Core
 
         public async Task<Question> GetQuestionById(int id)
         {
-            //ВОзвращаю я question, а контроллер должен вернуть либо ок, и вопрос, если он есть, либо ошибку 404 
-            //, но логики в контроллерах быть не должно, и вскрывать там сообщение, чтобы чтото проверить я вобще то не должен. Как Быть?
+           
             var question = await questionRepository.GetQuestionById(id);
             return question;
         }
