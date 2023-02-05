@@ -2,6 +2,7 @@
 using IntervewPrep.Core.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InterviewPrep.Web;
 
 namespace InterviewPrep.Web.Controllers
 {
@@ -39,11 +40,7 @@ namespace InterviewPrep.Web.Controllers
         public async  Task<IActionResult> Delete(int id) 
         {
             var result = await questionService.DeleteQuestion(id);
-            if (result == false)
-            {
-                return Ok();
-            }
-            return NotFound();
+            return this.Result(result);
         }
     }
 }

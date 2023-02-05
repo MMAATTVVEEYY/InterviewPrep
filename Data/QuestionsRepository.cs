@@ -20,7 +20,7 @@ namespace InterviewPrep.Data
         }
 
         public async Task<Question> GetQuestionById(int id) {
-           var question = await _context.Questions.FirstOrDefaultAsync(q => q.QuestionId == id);
+           var question = await _context.Questions.AsNoTracking().FirstOrDefaultAsync(q => q.QuestionId == id);
            return question;
         }
         public void AddQuestion(Question question) 
@@ -33,7 +33,7 @@ namespace InterviewPrep.Data
         }
         public async void DeleteQuestionById(int id)
         {
-            var question = await GetQuestionById(id);
+            var question = await _context.Questions.FirstOrDefaultAsync(q => q.QuestionId == id);
             _context.Remove(question);
             _context.SaveChanges();
         }

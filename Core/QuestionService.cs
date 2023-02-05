@@ -30,15 +30,17 @@ namespace IntervewPrep.Core
             
         }
         
-        public async Task<bool> DeleteQuestion(int id)
-        {  //Тут мне нужно знать, удалил ли я обьект, или нет, для этого из фунции удаления нужно чето вернуть - что?
+        public async Task<Question?> DeleteQuestion(int id)
+        {  
             Question question = await questionRepository.GetQuestionById(id);
             if (question != null) 
             {
                 questionRepository.DeleteQuestionById(id);
-                return false;// удалено, все ок
+                //return false;// удалено, все ок
             }
-            return true; //не удалено, ничего и не было найдено
+            
+            //return true; //не удалено, ничего и не было найдено
+            return question;
             //
            
         }
