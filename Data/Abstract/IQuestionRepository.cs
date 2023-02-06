@@ -11,7 +11,7 @@ namespace Data.Abstract
     {
         IEnumerable<Question> GetAll();
         void AddQuestion(Question question);
-        void UpdateQuestion(Question question);
+        Task<Question?> UpdateQuestion(Question question);
         Task<Question> GetQuestionById(int id);
         void DeleteQuestionById(int id);
     }

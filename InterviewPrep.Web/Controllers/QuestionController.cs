@@ -2,6 +2,7 @@
 using IntervewPrep.Core.Abstractions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using InterviewPrep.Web;
 
 namespace InterviewPrep.Web.Controllers
 {
@@ -34,16 +35,18 @@ namespace InterviewPrep.Web.Controllers
             questionService.AddQuestion(question);
             return Ok();
         }
-        //Можно здесь логику иметь вобще???
+       
         [HttpDelete]
         public async  Task<IActionResult> Delete(int id) 
         {
             var result = await questionService.DeleteQuestion(id);
-            if (result == false)
-            {
-                return Ok();
-            }
-            return NotFound();
+            return this.Result(result);
+        }
+        [HttpPut]
+        public async Task<IActionResult>Update(Question question)
+        {
+            var result = await questionService.UpdateQuestion(question);
+            return this.Result(result);// dopil
         }
     }
 }
