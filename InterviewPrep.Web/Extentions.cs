@@ -5,13 +5,13 @@ namespace InterviewPrep.Web
 {
     public static class Extentions
     {
-        public static StatusCodeResult Result<T>(this QuestionController controller,T result) 
+        public static ObjectResult Result<T>(this QuestionController controller,T result) 
         {
             if(result == null)
             {
-                return new NoContentResult();
+                return new NotFoundObjectResult(result);
             }
-            return new OkResult();
+            return new OkObjectResult(result);
         }
 
     }

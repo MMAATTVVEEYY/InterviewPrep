@@ -14,6 +14,7 @@ namespace IntervewPrep.Core.Abstractions
         public IEnumerable<Question> GetAll();
         public void AddQuestion (Question question);
         public Task<Question?> DeleteQuestion(int id);
-        public Task<Question> GetQuestionById(int id);
+        public Task<Question?> GetQuestionById(int id);
+        public Task<Question?> UpdateQuestion(Question updatedQuestion);
     }
 }

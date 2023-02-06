@@ -51,7 +51,7 @@ namespace IntervewPrep.Core
            
         }
 
-        public async Task<Question> GetQuestionById(int id)
+        public async Task<Question?> GetQuestionById(int id)
         {
            
             var question = await questionRepository.GetQuestionById(id);
@@ -64,6 +64,18 @@ namespace IntervewPrep.Core
             throw new NotImplementedException();
         }
 
-        
+        public async Task<Question?> UpdateQuestion(Question UpdatedQuestion)
+        {
+            //var question = await questionRepository.GetQuestionById(id);
+            if (UpdatedQuestion == null)
+            {
+                return null;
+            }
+            var result = await questionRepository.UpdateQuestion(UpdatedQuestion);
+           
+            
+            return result;
+            
+        }
     }
 }
